@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -p 8888:8888 -v ~/faculdade/2024.2-machine-learning:/home/jovyan/work --rm quay.io/jupyter/scipy-notebook
