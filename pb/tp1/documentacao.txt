@@ -1,0 +1,5 @@
+teste1
+
+Drop 'PassengerId', 'Name', 'Ticket', 'Cabin', 'Embarked'
+Label Encoder Sex
+
