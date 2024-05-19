@@ -1,0 +1,135 @@
+Default
+import CSV
+df = df.drop(['PassengerId', 'Name', 'Ticket', 'Cabin', 'Embarked'], axis=1)
+df = df.dropna()
+df.Sex = le.fit(df.Sex).transform(df.Sex)
+
+
+Simplest model
+No transformation, only default
+
+1 0.6853146853146853 KNeighborsClassifier(n_neighbors=1)
+2 0.6993006993006993 KNeighborsClassifier(n_neighbors=2)
+3 0.6783216783216783 KNeighborsClassifier(n_neighbors=3)
+4 0.6993006993006993 KNeighborsClassifier(n_neighbors=4)
+5 0.6923076923076923 KNeighborsClassifier()
+6 0.7062937062937062 KNeighborsClassifier(n_neighbors=6)
+7 0.7062937062937062 KNeighborsClassifier(n_neighbors=7)
+8 0.6993006993006993 KNeighborsClassifier(n_neighbors=8)
+9 0.7062937062937062 KNeighborsClassifier(n_neighbors=9)
+10 0.7062937062937062 KNeighborsClassifier(n_neighbors=10)
+
+---
+
+teste 1
+MinMaxScaler 'SibSp', 'Parch', 'Fare'
+StandardScaler 'Age'
+
+1 0.6993006993006993 KNeighborsClassifier(n_neighbors=1)
+2 0.8391608391608392 KNeighborsClassifier(n_neighbors=2)
+3 0.8041958041958042 KNeighborsClassifier(n_neighbors=3)
+4 0.8601398601398601 KNeighborsClassifier(n_neighbors=4)
+5 0.8671328671328671 KNeighborsClassifier()
+6 0.8461538461538461 KNeighborsClassifier(n_neighbors=6)
+7 0.8531468531468531 KNeighborsClassifier(n_neighbors=7)
+8 0.8531468531468531 KNeighborsClassifier(n_neighbors=8)
+9 0.8531468531468531 KNeighborsClassifier(n_neighbors=9)
+10 0.8461538461538461 KNeighborsClassifier(n_neighbors=10)
+
+---
+
+teste 2
+PowerTransformer 'Age', 'SibSp', 'Parch', 'Fare'
+
+1 0.7342657342657343 KNeighborsClassifier(n_neighbors=1)
+2 0.8041958041958042 KNeighborsClassifier(n_neighbors=2)
+3 0.7902097902097902 KNeighborsClassifier(n_neighbors=3)
+4 0.8111888111888111 KNeighborsClassifier(n_neighbors=4)
+5 0.8111888111888111 KNeighborsClassifier()
+6 0.8321678321678322 KNeighborsClassifier(n_neighbors=6)
+7 0.8251748251748252 KNeighborsClassifier(n_neighbors=7)
+8 0.8251748251748252 KNeighborsClassifier(n_neighbors=8)
+9 0.8461538461538461 KNeighborsClassifier(n_neighbors=9)
+10 0.8461538461538461 KNeighborsClassifier(n_neighbors=10)
+
+---
+
+teste 3
+PowerTransformer 'SibSp', 'Parch', 'Fare'
+StandardScaler 'Age'
+
+1 0.7202797202797203 KNeighborsClassifier(n_neighbors=1)
+2 0.7972027972027972 KNeighborsClassifier(n_neighbors=2)
+3 0.7902097902097902 KNeighborsClassifier(n_neighbors=3)
+4 0.8041958041958042 KNeighborsClassifier(n_neighbors=4)
+5 0.7902097902097902 KNeighborsClassifier()
+6 0.8181818181818182 KNeighborsClassifier(n_neighbors=6)
+7 0.8391608391608392 KNeighborsClassifier(n_neighbors=7)
+8 0.8321678321678322 KNeighborsClassifier(n_neighbors=8)
+9 0.8391608391608392 KNeighborsClassifier(n_neighbors=9)
+10 0.8461538461538461 KNeighborsClassifier(n_neighbors=10)
+
+---
+
+teste 4
+MinMax + PowerTransformer 'SibSp', 'Parch', 'Fare'
+StandardScaler 'Age'
+
+1 0.7412587412587412 KNeighborsClassifier(n_neighbors=1)
+2 0.7972027972027972 KNeighborsClassifier(n_neighbors=2)
+3 0.8041958041958042 KNeighborsClassifier(n_neighbors=3)
+4 0.8181818181818182 KNeighborsClassifier(n_neighbors=4)
+5 0.8111888111888111 KNeighborsClassifier()
+6 0.8391608391608392 KNeighborsClassifier(n_neighbors=6)
+7 0.8181818181818182 KNeighborsClassifier(n_neighbors=7)
+8 0.8181818181818182 KNeighborsClassifier(n_neighbors=8)
+9 0.8181818181818182 KNeighborsClassifier(n_neighbors=9)
+10 0.8321678321678322 KNeighborsClassifier(n_neighbors=10)
+
+---
+
+teste 5
+MinMax 'Age', 'SibSp', 'Parch', 'Fare'
+
+1 0.7482517482517482 KNeighborsClassifier(n_neighbors=1)
+2 0.7972027972027972 KNeighborsClassifier(n_neighbors=2)
+3 0.8251748251748252 KNeighborsClassifier(n_neighbors=3)
+4 0.8251748251748252 KNeighborsClassifier(n_neighbors=4)
+5 0.7972027972027972 KNeighborsClassifier()
+6 0.8251748251748252 KNeighborsClassifier(n_neighbors=6)
+7 0.7972027972027972 KNeighborsClassifier(n_neighbors=7)
+8 0.8041958041958042 KNeighborsClassifier(n_neighbors=8)
+9 0.8041958041958042 KNeighborsClassifier(n_neighbors=9)
+10 0.8111888111888111 KNeighborsClassifier(n_neighbors=10)
+
+---
+
+teste 6
+Only 'Age' and 'Pclass'; default
+
+1 0.6643356643356644 KNeighborsClassifier(n_neighbors=1)
+2 0.6643356643356644 KNeighborsClassifier(n_neighbors=2)
+3 0.6923076923076923 KNeighborsClassifier(n_neighbors=3)
+4 0.6923076923076923 KNeighborsClassifier(n_neighbors=4)
+5 0.6643356643356644 KNeighborsClassifier()
+6 0.6923076923076923 KNeighborsClassifier(n_neighbors=6)
+7 0.6573426573426573 KNeighborsClassifier(n_neighbors=7)
+8 0.6853146853146853 KNeighborsClassifier(n_neighbors=8)
+9 0.6433566433566433 KNeighborsClassifier(n_neighbors=9)
+10 0.6643356643356644 KNeighborsClassifier(n_neighbors=10)
+
+---
+
+teste 7
+Only 'Sex', 'Pclass' and 'Fare'; default
+
+1 0.8100558659217877 KNeighborsClassifier(n_neighbors=1)
+2 0.7821229050279329 KNeighborsClassifier(n_neighbors=2)
+3 0.7932960893854749 KNeighborsClassifier(n_neighbors=3)
+4 0.7932960893854749 KNeighborsClassifier(n_neighbors=4)
+5 0.8156424581005587 KNeighborsClassifier()
+6 0.7821229050279329 KNeighborsClassifier(n_neighbors=6)
+7 0.8156424581005587 KNeighborsClassifier(n_neighbors=7)
+8 0.7877094972067039 KNeighborsClassifier(n_neighbors=8)
+9 0.7932960893854749 KNeighborsClassifier(n_neighbors=9)
+10 0.7821229050279329 KNeighborsClassifier(n_neighbors=10)
