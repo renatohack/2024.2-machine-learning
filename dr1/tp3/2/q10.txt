@@ -1,0 +1,10 @@
+Diferença entre os Encoders
+
+One Hot Encoding:
+Cria uma coluna binária para cada categoria da variável categórica.
+
+Dummy Encoding (com LabelBinarizer):
+Similar ao One Hot Encoding, mas as colunas resultantes são nomeadas numericamente (1, 2, 3, etc.), ao invés de manter os nomes originais das categorias. Perde a interpretação direta das categorias, pois as colunas são numeradas.
+
+Effect Encoding:
+Representa cada categoria com uma combinação de -1, 0 e 1, escolhendo uma categoria de referência que é codificada como -1.
