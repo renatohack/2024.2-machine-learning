@@ -1,0 +1,7 @@
+1. Carregar os dados
+2. Separar entre treino e teste
+3. Criar validação cruzada com o conjunto de treino
+4. Criar as features com TD-IDF
+5. Selecionar o modelo vencedor
+6. Fazer análise das figuras de mérito levando em conta os datasets de validação (da validação cruzada)
+7. Fazer análise das figuras de mérito do cojunto de teste para compreender a capacidade de generalização do modelo
