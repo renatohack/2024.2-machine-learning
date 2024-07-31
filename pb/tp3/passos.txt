@@ -1,0 +1,22 @@
+- Anotações Gerais
+:: PCA necessita de Std Scaler pois o algoritmo é baseado em média zero e variância unitária
+:: Decision Tree NÃO é sensível à padronização dos dados
+:: Se PCA , Std Scaler necessário ; Se não PCA, Std Scaler não é necessário
+
+
+- Modelos
+:: Decision Tree sem Std Scaler e sem PCA
+:: Decision Tree com Std Scaler e sem PCA
+:: Decision Tree com Std Scaler e com PCA (diferentes valores)
+
+- Decisões
+:: Parâmetros a serem utilizados no grid search
+    :: criterion
+    :: max_depth
+    :: min_samples_leaf
+    :: max_leaf_nodes
+    :: ccp_alpha
+:: Como utilizar pipeline para testar parâmetros de grid search + PCA
+    :: https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html
+    :: https://scikit-learn.org/stable/auto_examples/compose/plot_compare_reduction.html
+    :: https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
