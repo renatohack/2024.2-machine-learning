@@ -34,4 +34,19 @@ def visualize_elbow(x):
 def generate_new_features(x, n):
     x_mod = x.copy()
     km = KMeans(n_clusters=n, random_state=0)
+    km.fit(x_mod)
+    centroids = km.cluster_centers_
+
+    for index_c, centroid in centroids:
+        number_columns = len(x_mod.columns)
+        x_mod.insert(number_columns, f'F{index_c}', [], True)
+
+    return x_mod
+
+
+
+
+
+
+
     
