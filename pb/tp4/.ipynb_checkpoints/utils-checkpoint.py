@@ -45,7 +45,7 @@ def calcular_distancia_euclidiana(p1, p2):
         distance += (p1[index] - p2[index]) ** 2
     return math.sqrt(distance)
 
-def generate_new_features(x, n, centroids):
+def generate_new_features(x, centroids):
     number_rows = len(x)
     x_mod = pd.DataFrame(x.copy())
     
@@ -68,13 +68,9 @@ def generate_new_features(x, n, centroids):
     return x_mod
 
 
-def criar_features_dataset(x_train, x_test, n):
-    km = KMeans(n_clusters=n, random_state=0)
-    km.fit(x_train)
-    centroids = km.cluster_centers_
-
-    x_train_mod = generate_new_features(x_train, n, centroids)
-    x_test_mod = generate_new_features(x_test, n, centroids)
+def criar_features_dataset(x_train, x_test, centroids):
+    x_train_mod = generate_new_features(x_train, centroids)
+    x_test_mod = generate_new_features(x_test, centroids)
 
     return x_train_mod, x_test_mod
 
