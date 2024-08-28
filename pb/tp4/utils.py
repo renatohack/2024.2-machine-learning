@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from yellowbrick.cluster import SilhouetteVisualizer
 from yellowbrick.cluster import KElbowVisualizer
 from sklearn.metrics import silhouette_score
+import pandas as pd
+import math
 
 
 def visualize_silhoutte_plot(x, n):
@@ -31,22 +33,38 @@ def visualize_elbow(x):
     visualizer.fit(x)
     visualizer.show()
 
-def generate_new_features(x, n):
-    x_mod = x.copy()
-    km = KMeans(n_clusters=n, random_state=0)
-    km.fit(x_mod)
-    centroids = km.cluster_centers_
+def calcular_distancia_euclidiana(p1, p2):
+    distance = 0
+    for index in range(len(p2)):
+        distance += (p1[index] - p2[index]) ** 2
+    return math.sqrt(distance)
 
-    for index_c, centroid in centroids:
+def generate_new_features(x, n, centroids):
+    number_rows = len(x)
+    x_mod = pd.DataFrame(x.copy())
+    
+    for index_c in range(len(centroids)):
+        centroid = centroids[index_c]
         number_columns = len(x_mod.columns)
-        x_mod.insert(number_columns, f'F{index_c}', [], True)
+        column_name = f'F{index_c}'
+
+        # inserrir nova coluna
+        x_mod.insert(number_columns, column_name, [0]*number_rows, True)
+
+        # paa cada linha, calcular distancia e preencher na coluna gerada
+        for index, row in x_mod.iterrows():
+            distance = calcular_distancia_euclidiana(row, centroid)
+            x_mod[column_name][index] = distance
 
     return x_mod
 
 
+def criar_features_dataset(x_train, x_test, n):
+    km = KMeans(n_clusters=n, random_state=0)
+    km.fit(x_train)
+    centroids = km.cluster_centers_
 
+    x_train_mod = generate_new_features(x_train, n, centroids)
+    x_test_mod = generate_new_features(x_test, n, centroids)
 
-
-
-
-    
+    return x_train_mod, x_test_mod
