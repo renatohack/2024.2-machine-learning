@@ -49,12 +49,13 @@ def generate_new_features(x, n, centroids):
         column_name = f'F{index_c}'
 
         # inserrir nova coluna
-        x_mod.insert(number_columns, column_name, [0]*number_rows, True)
+        x_mod.insert(number_columns, column_name, pd.Series([0]*number_rows, dtype=float), True)
 
         # paa cada linha, calcular distancia e preencher na coluna gerada
         for index, row in x_mod.iterrows():
             distance = calcular_distancia_euclidiana(row, centroid)
-            x_mod[column_name][index] = distance
+            #x_mod[column_name][index] = distance
+            x_mod.loc[index, column_name] = distance
 
     return x_mod
 
