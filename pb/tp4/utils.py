@@ -5,6 +5,12 @@ from yellowbrick.cluster import KElbowVisualizer
 from sklearn.metrics import silhouette_score
 import pandas as pd
 import math
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import roc_curve, roc_auc_score
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import classification_report
+import seaborn as sns
 
 
 def visualize_silhoutte_plot(x, n):
@@ -57,6 +63,8 @@ def generate_new_features(x, n, centroids):
             #x_mod[column_name][index] = distance
             x_mod.loc[index, column_name] = distance
 
+    x_mod.columns = x_mod.columns.astype(str)
+
     return x_mod
 
 
@@ -69,3 +77,30 @@ def criar_features_dataset(x_train, x_test, n):
     x_test_mod = generate_new_features(x_test, n, centroids)
 
     return x_train_mod, x_test_mod
+
+
+def show_estimator_results(grid, x_test, y_test):
+    print(f"Melhores parâmetros GridSearch: {grid.best_params_}")
+    print(f'Score GridSearch: {grid.score(x_test, y_test)}')
+    
+    print()
+    print('Classification Report')
+    y_pred = grid.predict(x_test)
+    print(classification_report(y_test, y_pred))
+
+    return y_pred
+
+
+def show_cm(y_test, y_pred):
+    cm = confusion_matrix(y_test, y_pred)
+
+    # Define the labels
+    labels = ['No Stroke', 'Stroke']
+    
+    # Plot the confusion matrix
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=labels, yticklabels=labels)
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
+    plt.title('Confusion Matrix')
+    plt.show()
