@@ -13,31 +13,42 @@ from sklearn.metrics import classification_report
 import seaborn as sns
 
 
-def visualize_silhoutte_plot(x, n):
-    fig, ax = plt.subplots(n//2, 2, figsize=(15,8), squeeze=False)
-
-    for i in range(2, n+1):
+def visualize_silhouette(x, n):
+    fig, ax = plt.subplots(n//2, 2, figsize=(30,16), squeeze=False)
+    silhouette_scores = []
+    range_k = range(2, n+1)
+    
+    for i in range_k:
         km = KMeans(n_clusters=i, random_state=0)
+        clusters = km.fit_predict(x)
+        score = silhouette_score(x, clusters)
+        silhouette_scores.append(score)
+        
+        print('N Clusters:', i, 'Avg:', silhouette_score(x, clusters))
+
         q, mod = divmod(i, 2)
         visualizer = SilhouetteVisualizer(km, colors='yellowbrick', ax=ax[q-1][mod])
         visualizer.fit(x)
 
-def visualize_silhouette_avg(x, n):
-    for i in range(2, n + 1):
-        km = KMeans(n_clusters=i, random_state=0)
-        cluster_labels = km.fit_predict(x)
-        print('N Clusters:', i, 'Avg:', silhouette_score(x, cluster_labels))
+    return silhouette_scores, range_k
 
-def visualize_silhouette(x, n):
-    visualize_silhoutte_plot(x, n)
-    visualize_silhouette_avg(x, n)
 
-def visualize_elbow(x):
+
+def visualize_elbow(x, n):
     km = KMeans(random_state=0)
-    visualizer = KElbowVisualizer(km, k=(2,10))
-     
+    visualizer = KElbowVisualizer(km, k=(2,n))
     visualizer.fit(x)
     visualizer.show()
+
+
+def visualize_sil_score_per_cluster(silhouette_scores, range_k):
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(2, len(silhouette_scores) + 2), silhouette_scores, marker='o')
+    plt.title("Silhouette Score para diferentes valores de K")
+    plt.xlabel("Número de Clusters (K)")
+    plt.ylabel("Silhouette Score")
+    plt.show()
+
 
 def calcular_distancia_euclidiana(p1, p2):
     distance = 0
@@ -87,11 +98,8 @@ def show_estimator_results(grid, x_test, y_test):
     return y_pred
 
 
-def show_cm(y_test, y_pred):
+def show_cm(y_test, y_pred, labels):
     cm = confusion_matrix(y_test, y_pred)
-
-    # Define the labels
-    labels = ['No Stroke', 'Stroke']
     
     # Plot the confusion matrix
     plt.figure(figsize=(8, 6))
