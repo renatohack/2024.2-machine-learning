@@ -1,0 +1,34 @@
+1. Explique com suas palavras o que é e como é usado o Ensemble Learning.
+R: Ensemble Learning é uma técnica de aprendizado de máquina que combina vários modelos para criar um modelo mais robusto e preciso. 
+Os principais métodos incluem Bagging, onde modelos são treinados em subconjuntos de dados e combinados por 
+    - média ou votação; 
+    - Boosting, onde modelos são treinados sequencialmente, corrigindo os erros dos anteriores; e 
+    - Stacking, que usa as previsões de vários modelos como entrada para um meta-modelo.
+
+
+
+2. Explique como funciona o procedimento conhecido como Voting Classifier.
+R: O Voting Classifier é uma técnica de ensemble usada para classificação.
+Ele combina as previsões de vários modelos por votação. 
+    - No Hard Voting, a classe com mais votos é a final; 
+    - no Soft Voting, as probabilidades previstas são somadas, e a classe com a maior soma é escolhida. 
+Essa técnica melhora a precisão ao aproveitar os pontos fortes de diferentes modelos.
+
+
+
+5. Explique como funciona a estratégia de Bootstrap para árvores de decisão.
+Bootstrap é uma técnica de amostragem com reposição. 
+Para árvores de decisão, ela funciona criando vários subconjuntos do conjunto de dados original, onde alguns exemplos podem ser repetidos e outros podem ser omitidos. 
+Cada árvore é treinada em um desses subconjuntos, o que ajuda a reduzir o overfitting, pois as árvores são treinadas em dados ligeiramente diferentes.
+
+
+6. Explique como funciona a estratégia de Bagging para árvores de decisão.
+Bagging (Bootstrap Aggregating) estende o conceito de Bootstrap para criar um ensemble de árvores de decisão. 
+Várias árvores são treinadas em diferentes subconjuntos gerados pelo Bootstrap. 
+As previsões finais são obtidas pela média (para regressão) ou pela votação (para classificação) das previsões de todas as árvores. Isso aumenta a estabilidade e a precisão do modelo, reduzindo a variância.
+
+
+7. Explique como funciona a estratégia de Random Forest para árvores de decisão.
+Random Forest é uma extensão do Bagging. 
+Além de usar o Bootstrap para criar diferentes subconjuntos, o Random Forest introduz a aleatoriedade na seleção de features para a divisão em cada nó da árvore. 
+Cada árvore no ensemble é treinada em um subconjunto diferente de dados e com um subconjunto aleatório de features, o que resulta em maior diversidade entre as árvores e melhora ainda mais a robustez e a precisão do modelo final.
