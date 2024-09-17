@@ -1,0 +1,4 @@
+1. Analise o dataset Credit Card Fraud Detection. Um modelo para previsão será bidimensional ou multidimensional? Explique.
+    R: O modelo será multidimensional pois contém mais que duas features (variáveis) que definem o espaço vetorial de cada amostra.
+3. Como seria uma versão multidimensional do problema de detecção de fraudes em cartão de crédito? Explique e ilustre com exemplos.
+    R: Ele já é multidimensional. Porém, poderia ser reduzido a um modelo bidimensional caso utilizássemos um PCA, por exemplo, para reduzir a dimensionalidade até 2.
