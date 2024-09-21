@@ -1,4 +1,14 @@
 1. Analise o dataset Credit Card Fraud Detection. Um modelo para previsão será bidimensional ou multidimensional? Explique.
     R: O modelo será multidimensional pois contém mais que duas features (variáveis) que definem o espaço vetorial de cada amostra.
+
 3. Como seria uma versão multidimensional do problema de detecção de fraudes em cartão de crédito? Explique e ilustre com exemplos.
     R: Ele já é multidimensional. Porém, poderia ser reduzido a um modelo bidimensional caso utilizássemos um PCA, por exemplo, para reduzir a dimensionalidade até 2.
+
+6. Explique o que é e para que serve o ensemble learning.
+    Ensemble Learning é uma técnica de aprendizado de máquina que combina vários modelos para melhorar a precisão das previsões e reduzir erros.
+    Busca tirar proveito de diferentes modelos, gerando previsões mais robustas. Existem três principais abordagens:
+        - Bagging: Treina múltiplos modelos independentes em subconjuntos dos dados e combina suas previsões, como no algoritmo Random Forest.
+        - Boosting: Constrói modelos sequencialmente, onde cada novo modelo foca nos erros cometidos pelo anterior, como o AdaBoost e o Gradient Boosting.
+        - Stacking: Combina diferentes modelos e utiliza um meta-modelo para aprender como combinar suas previsões de forma otimizada.
+    O Ensemble Learning é eficaz para aumentar a acurácia e reduzir o overfitting em problemas complexos.
+    
