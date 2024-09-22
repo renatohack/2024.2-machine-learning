@@ -11,4 +11,23 @@
         - Boosting: Constrói modelos sequencialmente, onde cada novo modelo foca nos erros cometidos pelo anterior, como o AdaBoost e o Gradient Boosting.
         - Stacking: Combina diferentes modelos e utiliza um meta-modelo para aprender como combinar suas previsões de forma otimizada.
     O Ensemble Learning é eficaz para aumentar a acurácia e reduzir o overfitting em problemas complexos.
-    
+
+
+9. Explique como podemos combinar diferentes modelos de árvores de decisão através do método de Boosting. Dê exemplos.
+    O Boosting combina modelos fracos, como árvores de decisão simples, de forma sequencial, corrigindo erros anteriores para criar um modelo forte. Exemplos incluem AdaBoost, que ajusta pesos das amostras mal classificadas, e Gradient Boosting, que minimiza o erro residual. É eficaz em melhorar a precisão, mas pode ser computacionalmente caro e sujeito a overfitting.
+    Os exemplos se encontram no código
+
+11. Responda:
+    a) Qual é a diferença entre interpretabilidade e explicabilidade de modelos? Explique.
+        :: Interpretabilidade refere-se à facilidade com que os humanos conseguem entender o que um modelo está fazendo e como ele chega a suas previsões. É uma qualidade intrínseca ao modelo, ou seja, alguns modelos são naturalmente mais interpretáveis.
+        :: Explicabilidade é a capacidade de explicar os resultados de um modelo, mesmo que ele não seja naturalmente interpretável. Para modelos complexos, explicabilidade geralmente envolve métodos externos (como LIME ou SHAP) para explicar suas previsões.
+    b) Quais são os diferentes tipos de interpretabilidade? Dê exemplos.
+        :: Intrínseca: Modelos simples como árvores de decisão.
+        :: Pós-Hoc: Explicações de modelos complexos (ex: redes neurais) usando técnicas como LIME ou SHAP.
+
+
+12. O que são modelos caixa-branca e modelos caixa-preta? Dê exemplos. 
+    :: Modelos Caixa-Branca são aqueles cuja lógica e funcionamento interno são completamente transparentes e fáceis de entender. Eles oferecem alta interpretabilidade.
+        Exemplo: Regressão linear ou árvores de decisão pequenas, onde o fluxo lógico das decisões é claro.
+    :: Modelos Caixa-Preta são aqueles cuja lógica interna é complexa ou opaca, sendo difícil ou impossível para humanos entenderem diretamente como as previsões são feitas.
+        Exemplo: Redes neurais profundas e modelos de boosting como o XGBoost são considerados caixas-pretas, devido à complexidade de suas estruturas e cálculos internos.
